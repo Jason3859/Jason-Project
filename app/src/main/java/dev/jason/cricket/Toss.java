@@ -10,6 +10,7 @@ public class Toss {
         gameConfig.setPlayerTossChoice();
         gameConfig.setComputerTossChoice();
         System.out.println("Computer: " + GameConfig.computerTossChoice);
+        System.out.println();
     }
 
     static void afterToss() throws Exception {

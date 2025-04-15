@@ -10,6 +10,7 @@ public class MainGame {
         System.out.print("Bat or Ball: ");
         gameConfig.setPlayerChoice();
         gameConfig.setComputerChoice();
+        System.out.println();
     }
 
     static void computerTossChoice() {
@@ -19,6 +20,8 @@ public class MainGame {
     }
 
     public static void player() throws Exception {
+        System.out.println("Over: " + GameConfig.overs);
+        System.out.println("Ball: " + GameConfig.balls);
         mainGame.askInputsForGame();
 
         if (GameConfig.playerInput != GameConfig.computerInput) {
@@ -33,13 +36,37 @@ public class MainGame {
             else
                 System.out.println("You are out! It's computer's chance to bat.");
 
-            while (!GameConfig.isComputerOut)
-                computer();
+            System.out.println("Player score: " + GameConfig.playerScore);
+            System.out.println();
+
+            GameConfig.balls = 0;
+            GameConfig.overs = 0;
+
+            computerBatting();
         }
 
     }
 
+    public static void computerBatting() throws Exception {
+        while (!GameConfig.isComputerOut || GameConfig.overs == GameConfig.totalOvers) {
+            GameConfig.balls++;
+            MainGame.computer();
+            if (GameConfig.balls == 6) {
+                GameConfig.overs += 1;
+                gameConfig.resetBalls();
+            }
+
+            if (GameConfig.isPlayerOut) {
+                if (GameConfig.playerScore <= GameConfig.computerScore) {
+                    break;
+                }
+            }
+        }
+    }
+
     public static void computer() throws Exception {
+        System.out.println("Over: " + GameConfig.overs);
+        System.out.println("Ball: " + GameConfig.balls);
         mainGame.askInputsForGame();
 
         if (GameConfig.computerInput != GameConfig.playerInput) {
@@ -54,10 +81,31 @@ public class MainGame {
             else
                 System.out.println("Computer is out! It's your chance to bat.");
 
-            while (!GameConfig.isPlayerOut)
-                player();
+            System.out.println("Computer score: " + GameConfig.computerScore);
+            System.out.println();
+
+            GameConfig.balls = 0;
+            GameConfig.overs = 0;
+            playerBatting();
         }
 
+    }
+
+    public static void playerBatting() throws Exception {
+        while (!GameConfig.isPlayerOut || GameConfig.overs == GameConfig.totalOvers) {
+            GameConfig.balls++;
+            MainGame.player();
+            if (GameConfig.balls == 6) {
+                GameConfig.overs += 1;
+                gameConfig.resetBalls();
+            }
+
+            if (GameConfig.isComputerOut) {
+                if (GameConfig.playerScore >= GameConfig.computerScore) {
+                    break;
+                }
+            }
+        }
     }
 
     public static void gameSummary() {

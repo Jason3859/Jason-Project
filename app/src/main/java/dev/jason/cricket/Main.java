@@ -1,6 +1,7 @@
 package dev.jason.cricket;
 
 public class Main {
+
     public static void mainGame() throws Exception {
         Toss.toss();
         Toss.afterToss();
@@ -12,13 +13,11 @@ public class Main {
 
             switch (GameConfig.playerChoice) {
                 case "bat":
-                    while (!GameConfig.isPlayerOut)
-                        MainGame.player();
+                    MainGame.playerBatting();
                     break;
 
                 case "ball":
-                    while (!GameConfig.isComputerOut)
-                        MainGame.computer();
+                    MainGame.computerBatting();
                     break;
             }
         }
@@ -29,12 +28,11 @@ public class Main {
 
             switch (GameConfig.computerChoice.toLowerCase()) {
                 case "bat":
-                    while (!GameConfig.isComputerOut)
-                        MainGame.computer();
+                    MainGame.computerBatting();
                     break;
+
                 case "ball":
-                    while (!GameConfig.isPlayerOut)
-                        MainGame.player();
+                    MainGame.playerBatting();
                     break;
             }
         }

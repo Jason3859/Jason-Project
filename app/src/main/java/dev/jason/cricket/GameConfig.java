@@ -18,10 +18,13 @@ public class GameConfig {
     static String computerChoice;
     static int playerInput;
     static int computerInput;
-    static int playerScore = 0;
-    static int computerScore = 0;
     static boolean isPlayerOut;
     static boolean isComputerOut;
+    public static int playerScore = 0;
+    public static int computerScore = 0;
+    public static int overs = 0;
+    public static int balls = 0;
+    public static int totalOvers = 5;
 
     void setComputerTossChoice() {
         computerTossChoice =
@@ -33,9 +36,6 @@ public class GameConfig {
         if (temp.equals("odd") || temp.equals("eve")) {
             playerTossChoice = temp;
         }
-    }
-    void setComputerPostTossChoice() {
-        computerPostTossChoice = random.randomInt();
     }
     void setPlayerPostTossChoice() throws InputOutOfRangeException {
         int temp = sc.nextInt();
@@ -52,6 +52,12 @@ public class GameConfig {
         } else {
             throw new InputOutOfRangeException("Input must be less than or equal to 5");
         }
+    }
+    void resetBalls() {
+        balls = 0;
+    }
+    void setComputerPostTossChoice() {
+        computerPostTossChoice = random.randomInt();
     }
     void setComputerInput() {
         computerInput = random.randomInt();
