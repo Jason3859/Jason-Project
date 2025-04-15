@@ -1,6 +1,7 @@
 plugins {
-    alias(libs.plugins.gradle.java.application.plugin)
+    alias(libs.plugins.gradle.application.plugin)
     alias(libs.plugins.gradle.kotlin.plugin)
+    alias(libs.plugins.gradle.java.plugin)
 }
 
 java {

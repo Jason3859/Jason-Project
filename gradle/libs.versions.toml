@@ -9,4 +9,5 @@ kotlin-standard-library = { module = "org.jetbrains.kotlin:kotlin-stdlib", versi
 
 [plugins]
 gradle-kotlin-plugin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-gradle-java-application-plugin = { id = "application" }
+gradle-application-plugin = { id = "application" }
+gradle-java-plugin = { id = "java" }
