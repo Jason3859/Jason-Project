@@ -17,6 +17,12 @@ tasks.named<JavaExec>("run") {
     standardInput = System.`in`
 }
 
+tasks.register<JavaExec>("cricket") {
+    mainClass = "dev.jason.cricket.CricketMain"
+    classpath = sourceSets["main"].runtimeClasspath
+    standardInput = System.`in`
+}
+
 repositories {
     mavenCentral()
 }
