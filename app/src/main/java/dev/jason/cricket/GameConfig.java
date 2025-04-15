@@ -1,5 +1,7 @@
 package dev.jason.cricket;
 
+import dev.jason.exception.InputOutOfRangeException;
+
 import java.util.Scanner;
 
 public class GameConfig {

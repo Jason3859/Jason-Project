@@ -1,5 +1,7 @@
 package dev.jason.cricket;
 
+import dev.jason.exception.InputOutOfRangeException;
+
 public class MainGame {
     private static final GameConfig gameConfig = new GameConfig();
     private static final MainGame mainGame = new MainGame();

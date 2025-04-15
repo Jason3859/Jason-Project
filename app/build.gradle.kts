@@ -1,6 +1,6 @@
 plugins {
-    application
-    kotlin("jvm") version "2.1.0"
+    alias(libs.plugins.gradle.java.application.plugin)
+    alias(libs.plugins.gradle.kotlin.plugin)
 }
 
 java {
@@ -22,5 +22,5 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
+    implementation(libs.kotlin.standard.library)
 }
