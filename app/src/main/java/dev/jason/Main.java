@@ -19,7 +19,7 @@ public class Main {
 			switch (choice) {
 				case 1:
 					try {
-						dev.jason.cricket.Main.mainGame();
+						dev.jason.cricket.MainGame.mainGame();
 					} catch (Exception e) {
 						System.out.println(e.getMessage());
 					}
