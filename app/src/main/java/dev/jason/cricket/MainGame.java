@@ -11,12 +11,13 @@ public class MainGame {
         gameConfig.setPlayerChoice();
         gameConfig.setComputerChoice();
         System.out.println();
+        System.out.println("Okay! You " + GameConfig.playerChoice + " first");
     }
 
     static void computerTossChoice() {
         gameConfig.setComputerChoice();
-        System.out.println("Computer choice to " + GameConfig.computerChoice);
         System.out.println();
+        System.out.println("Computer choice to " + GameConfig.computerChoice);
     }
 
     public static void player() throws Exception {
@@ -36,7 +37,7 @@ public class MainGame {
             else
                 System.out.println("You are out! It's computer's chance to bat.");
 
-            System.out.println("Player score: " + GameConfig.playerScore);
+            System.out.println("Your score: " + GameConfig.playerScore);
             System.out.println();
 
             GameConfig.balls = 0;
@@ -57,7 +58,7 @@ public class MainGame {
             }
 
             if (GameConfig.isPlayerOut) {
-                if (GameConfig.playerScore <= GameConfig.computerScore) {
+                if (GameConfig.computerScore > GameConfig.playerScore) {
                     break;
                 }
             }
@@ -101,7 +102,7 @@ public class MainGame {
             }
 
             if (GameConfig.isComputerOut) {
-                if (GameConfig.playerScore >= GameConfig.computerScore) {
+                if (GameConfig.playerScore > GameConfig.computerScore) {
                     break;
                 }
             }
