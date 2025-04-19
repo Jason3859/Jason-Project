@@ -81,24 +81,37 @@ public class MainGame {
             GameConfig.balls = 0;
             GameConfig.overs = 0;
 
-            computerBatting();
+            if (!GameConfig.isComputerOut)
+                computerBatting();
         }
 
     }
 
-    public static void computerBatting() throws Exception {
-        while (!GameConfig.isComputerOut || GameConfig.overs == GameConfig.totalOvers) {
+    public static void playerBatting() throws Exception {
+        while (!GameConfig.isPlayerOut) {
             GameConfig.balls++;
-            MainGame.computer();
+            MainGame.player();
             if (GameConfig.balls == 6) {
                 GameConfig.overs += 1;
                 gameConfig.resetBalls();
             }
 
-            if (GameConfig.isPlayerOut) {
-                if (GameConfig.computerScore > GameConfig.playerScore) {
+            if (GameConfig.isComputerOut) {
+                if (GameConfig.playerScore > GameConfig.computerScore) {
                     break;
                 }
+            }
+
+            if (GameConfig.overs == GameConfig.totalOvers) {
+                GameConfig.isPlayerOut = true;
+                System.out.println("Out of balls!");
+                if (!GameConfig.isComputerOut) {
+                    System.out.println("It's computer's chance to bat.");
+                    GameConfig.balls = 0;
+                    GameConfig.overs = 0;
+                    computerBatting();
+                }
+                break;
             }
         }
     }
@@ -125,24 +138,38 @@ public class MainGame {
 
             GameConfig.balls = 0;
             GameConfig.overs = 0;
-            playerBatting();
+
+            if (!GameConfig.isPlayerOut)
+                playerBatting();
         }
 
     }
 
-    public static void playerBatting() throws Exception {
-        while (!GameConfig.isPlayerOut || GameConfig.overs == GameConfig.totalOvers) {
+    public static void computerBatting() throws Exception {
+        while (!GameConfig.isComputerOut) {
             GameConfig.balls++;
-            MainGame.player();
+            MainGame.computer();
             if (GameConfig.balls == 6) {
                 GameConfig.overs += 1;
                 gameConfig.resetBalls();
             }
 
-            if (GameConfig.isComputerOut) {
-                if (GameConfig.playerScore > GameConfig.computerScore) {
+            if (GameConfig.isPlayerOut) {
+                if (GameConfig.computerScore > GameConfig.playerScore) {
                     break;
                 }
+            }
+
+            if (GameConfig.overs == GameConfig.totalOvers) {
+                GameConfig.isComputerOut = true;
+                System.out.println("Out of balls!");
+                if (!GameConfig.isPlayerOut) {
+                    System.out.println("It's your chance to bat.");
+                    GameConfig.balls = 0;
+                    GameConfig.overs = 0;
+                    playerBatting();
+                }
+                break;
             }
         }
     }

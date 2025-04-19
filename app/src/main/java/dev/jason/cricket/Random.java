@@ -8,7 +8,7 @@ public class Random {
 
     public int randomInt() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
-        return numbers.get(random.nextInt(numbers.size()));
+        return /*numbers.get(random.nextInt(numbers.size()));*/3;
     }
 
     public String computerChoice() {

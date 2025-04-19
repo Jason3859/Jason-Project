@@ -24,7 +24,7 @@ public class GameConfig {
     public static int computerScore = 0;
     public static int overs = 0;
     public static int balls = 0;
-    public static int totalOvers = 5;
+    public static int totalOvers = 2;
 
     void setComputerTossChoice() {
         computerTossChoice =
